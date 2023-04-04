@@ -9,9 +9,14 @@
   <style>
     .years {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       background-color: rgb(19, 15, 45);
+      position: absolute;
+      top: 20px;
+      right: 80px;
+      bottom: 20px;
     }
     .element {
       display: inline-block;
@@ -22,7 +27,7 @@
       background: #FFF;
       color: #1a1a1a;
       text-align: center;
-      margin-right: 20px;
+      margin-bottom: 20px;
       cursor: pointer;
     }
     .active {
@@ -31,13 +36,13 @@
     }
   </style>
 </head>
-<body style="height: 100%; margin: 0">
-  <div id="container" style="height: 90%"></div>
-  <div class="years" style="height: 10%">
-    <span data="2019" class="element active">2019</span>
-    <span data="2020" class="element">2020</span>
-    <span data="2021" class="element">2021</span>
-    <span data="2022" class="element">2022</span>
+<body style="height: 100%; margin: 0;position: relative;">
+  <div id="container" style="height: 100%"></div>
+  <div class="years">
+    <div data="2019" class="element active">2019</div>
+    <div data="2020" class="element">2020</div>
+    <div data="2021" class="element">2021</div>
+    <div data="2022" class="element">2022</div>
   </div>
   
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
