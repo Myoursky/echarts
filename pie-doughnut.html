@@ -34,9 +34,10 @@
 <body style="height: 100%; margin: 0">
   <div id="container" style="height: 90%"></div>
   <div class="years" style="height: 10%">
-    <span data="2021" class="element active">2021</span>
+    <span data="2019" class="element active">2019</span>
+    <span data="2020" class="element">2020</span>
+    <span data="2021" class="element">2021</span>
     <span data="2022" class="element">2022</span>
-    <span data="2023" class="element">2023</span>
   </div>
   
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
@@ -67,18 +68,14 @@
     });
     var app = {};
     var option;
-    var data1 = [{ value: 1048, name: 'Search Engine' },
-        { value: 735, name: 'Direct' },
-        { value: 580, name: 'Email' },
-        { value: 484, name: 'Union Ads' },
-        { value: 300, name: 'Video Ads' }]
-    var data2 = [{ value: 1048, name: 'Search Engine' },
-        { value: 735, name: 'Direct' },
-        { value: 580, name: 'Email' }]
-    var data3 = [{ value: 735, name: 'Direct' },
-        { value: 580, name: 'Email' },
-        { value: 484, name: 'Union Ads' },
-        { value: 300, name: 'Video Ads' }]
+    var data4 = [{ value: 19, name: 'D11' },
+        { value: 81, name: 'D16' }]
+    var data3 = [{ value: 24, name: 'D11' },
+        { value: 76, name: 'D16' }]
+    var data2 = [{ value: 30, name: 'D11' },
+        { value: 70, name: 'D16' }]
+    var data1 = [{ value: 20, name: 'D11' },
+       { value: 80, name: 'D16' }]
 
     option = {
   tooltip: {
@@ -126,12 +123,14 @@
         $('.element').click(function (ele, index) {
           const year = $(this).attr('data')
           $(this).addClass('active').siblings().removeClass('active');
-          if (year === '2021') {
+          if (year === '2019') {
             option.series[0].data = data1
-          } else if (year === '2022') {
+          } else if (year === '2020') {
             option.series[0].data = data2
-          } else if (year === '2023') {
+          } else if (year === '2021') {
             option.series[0].data = data3
+          } else if (year === '2022'){
+            option.series[0].data = data4
           } else {
             option.series[0].data = data1
           }
