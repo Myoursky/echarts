@@ -5,12 +5,41 @@
 <html lang="zh-CN" style="height: 100%">
 <head>
   <meta charset="utf-8">
+  <style>
+    .years {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(19, 15, 45);
+    }
+    .element {
+      display: inline-block;
+      width: 80px;
+      height: 42px;
+      border-radius: 4px;
+      line-height: 42px;
+      background: #FFF;
+      color: #1a1a1a;
+      text-align: center;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+    .active {
+      color: #fff;
+      background-color: #409eff;
+    }
+  </style>
 </head>
 <body style="height: 100%; margin: 0">
-  <div id="container" style="height: 100%"></div>
-
+  <div id="container" style="height: 90%"></div>
+  <div class="years" style="height: 10%">
+    <span data="2021" class="element active">2021</span>
+    <span data="2022" class="element">2022</span>
+    <span data="2023" class="element">2023</span>
+  </div>
   
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <!-- Uncomment this line if you want to dataTool extension
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/extension/dataTool.min.js"></script>
   -->
@@ -36,8 +65,19 @@
       useDirtyRect: false
     });
     var app = {};
-    
     var option;
+    var data1 = [{ value: 1048, name: 'Search Engine' },
+        { value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' },
+        { value: 484, name: 'Union Ads' },
+        { value: 300, name: 'Video Ads' }]
+    var data2 = [{ value: 1048, name: 'Search Engine' },
+        { value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' }]
+    var data3 = [{ value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' },
+        { value: 484, name: 'Union Ads' },
+        { value: 300, name: 'Video Ads' }]
 
     option = {
   tooltip: {
@@ -67,13 +107,7 @@
       labelLine: {
         show: false
       },
-      data: [
-        { value: 1048, name: 'Search Engine' },
-        { value: 735, name: 'Direct' },
-        { value: 580, name: 'Email' },
-        { value: 484, name: 'Union Ads' },
-        { value: 300, name: 'Video Ads' }
-      ]
+      data: data1
     }
   ]
 };
@@ -81,6 +115,28 @@
     if (option && typeof option === 'object') {
       myChart.setOption(option);
     }
+
+    // $(".element").click(() => {
+    //   console.log(this)
+    //   $(this).addClass('active').siblings().removeClass('active');
+    // })
+
+    $(document).ready(function () {
+        $('.element').click(function (ele, index) {
+          const year = $(this).attr('data')
+          $(this).addClass('active').siblings().removeClass('active');
+          if (year === '2021') {
+            option.series[0].data = data1
+          } else if (year === '2022') {
+            option.series[0].data = data2
+          } else if (year === '2023') {
+            option.series[0].data = data3
+          } else {
+            option.series[0].data = data1
+          }
+          myChart.setOption(option);
+        })
+    })
 
     window.addEventListener('resize', myChart.resize);
   </script>
