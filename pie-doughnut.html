@@ -79,7 +79,8 @@
 
     option = {
   tooltip: {
-    trigger: 'item'
+    trigger: 'item',
+    formatter: '{b0}: {c0}%'
   },
   legend: {
     top: '5%',
@@ -87,7 +88,7 @@
   },
   series: [
     {
-      name: 'Access From',
+      name: '',
       type: 'pie',
       radius: ['40%', '70%'],
       avoidLabelOverlap: false,
@@ -99,7 +100,8 @@
         label: {
           show: true,
           fontSize: 40,
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          formatter: '{c0}%'
         }
       },
       labelLine: {
